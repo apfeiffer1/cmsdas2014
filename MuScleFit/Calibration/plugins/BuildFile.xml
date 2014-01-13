@@ -1,0 +1,14 @@
+<use name="FWCore/Framework"/>
+<use name="FWCore/PluginManager"/>
+<use name="DataFormats/RecoCandidate"/>
+<use name="DataFormats/PatCandidates"/>
+<use name="CommonTools/Utils"/>
+<use name="CommonTools/CandAlgos"/>
+<use name="CommonTools/CandUtils"/>
+<use name="MuScleFit/Calibration"/>
+
+<library   file="*.cc" name="MuScleFitCalibrationPlugins">
+  <flags   EDM_PLUGIN="1"/>
+</library>
+
+  

@@ -1,7 +1,0 @@
-<bin name="computePDFvariations" file="computePDFvariations.cc">
-  <use name="FWCore/FWLite"/>
-  <use name="SimDataFormats/GeneratorProducts"/>
-  <use name="lhapdf"/>
-  <use name="root"/>
-  <use name="rootcore"/>
-</bin>

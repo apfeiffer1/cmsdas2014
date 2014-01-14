@@ -12,9 +12,13 @@ def softID(muon,vertex):
 def detIso(muon,vertex):
     return (muon.isolationR03().sumPt+muon.isolationR03().emEt+muon.isolationR03().hadEt)/muon.pt()
 
+def pfIso(muon,vertex):
+    return (muon.chargedHadronIso()+muon.photonIso()+muon.neutralHadronIso())/muon.pt()
+
 
 analyzer.addSelection('softMuonSelection',softID,20,ROOT.kRed)
 analyzer.addMultipleSelection('detIso',detIso,20,ROOT.kGreen,20,0,0.5)
+analyzer.addMultipleSelection('pfIso',pfIso,20,ROOT.kMagenta,20,0,0.5)
 
 
 analyzer.run()

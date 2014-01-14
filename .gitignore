@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+# Compiled python
+__init__.py
+*.pyc
+
+# ROOT files
+*.root

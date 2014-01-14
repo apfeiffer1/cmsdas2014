@@ -18,6 +18,7 @@ analyzer.addMultipleSelection('detIso',detIso,20,ROOT.kGreen,20,0,0.5)
 
 
 
+
 analyzer.run()
 canvas,g=analyzer.summarize()
 canvas.Update()

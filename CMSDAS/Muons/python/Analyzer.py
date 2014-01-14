@@ -120,6 +120,8 @@ class Analyzer (object):
             ]
         events=Events(files)
         for event in events:
+            if self.processFunc is None and self.background>2500:
+                break
             self.readCollections(event)
             self.analyze()
 

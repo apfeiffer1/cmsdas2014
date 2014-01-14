@@ -41,8 +41,8 @@ class Analyzer (object):
         for mu1,mu2 in itertools.combinations(self.muons,2):
             #signal selection
             if mu1.isTightMuon(self.vertex) and \
-               mu1.pt()>25 and mu2.pt()>20 and \
-               mu1.chargedHadronIso()/mu1.pt()<0.1 and \
+               mu1.pt()>20 and mu2.pt()>20 and \
+               mu1.chargedHadronIso()<0.15 and \
                mu1.charge()+mu2.charge() ==0 and \
                (mu1.p4()+mu2.p4()).M()>80 and (mu1.p4()+mu2.p4()).M()<120.:
                 self.signal=self.signal+1
@@ -70,8 +70,8 @@ class Analyzer (object):
                         if selection['function'](mu2,self.vertex)<selection['value']:
                             selection['signal'] = selection['signal']+1
 
-            if mu1.pt()>25 and mu2.pt()>20  \
-               and mu1.chargedHadronIso()/mu1.pt()>0.3 \
+            if mu1.pt()>20 and mu2.pt()>20  \
+               and mu1.chargedHadronIso()>5.0 and (mu1.p4()+mu2.p4()).M()<80. \
                and mu1.charge()+mu2.charge() !=0 :
                 self.background=self.background+1
                 for name,selection in self.selections.iteritems():
@@ -116,10 +116,12 @@ class Analyzer (object):
 
     def run(self):
         files =[
-         'root://eoscms//eos/cms//store/cmst3/group/das2014/Muons/input.root'
+         'root://eoscms//eos/cms//store/cmst3/group/das2014/Muons/input2.root'
             ]
         events=Events(files)
         for event in events:
+            if self.processFunc is None and self.background>2500:
+                break
             self.readCollections(event)
             self.analyze()
 
